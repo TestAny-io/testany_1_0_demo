@@ -1,0 +1,76 @@
+{
+  "TestJobTitle": "Get IP Address",
+  "TestJobDescription": "",
+  "Constants": {
+    "JavaTFOutputPath": "$JavaTFOutputPath$"
+  },
+  "Environments": {
+    "Staging": {
+      "ClientId": "YOUR-ClientId",
+      "ClientSecret": "YOUR-ClientSecret"
+    }
+  },
+  "Tests": [
+    {
+      "Identifier": "step-1-POST-Get_IP_Address",
+      "APIModel": "REST",
+      "Environment": "Staging",
+      "Description": "",
+      "HTTPMethod": "POST",
+      "Path": "http://ip.jsontest.com/",
+      "RequestHeader": "ewogICAgICAgICAgICAiQ29udGVudC1UeXBlIjogImFwcGxpY2F0aW9uL2pzb24iLAogICAgICAgICAgICAiQ29ubmVjdGlvbiI6ICJrZWVwLWFsaXZlIgogICAgICAgIH0=",
+      "RequestBody": "eyJwcm9wZXJ0eSIgOiBbIlNpdGVzIl0sICJyZXBvcnRfdHlwZSIgOiBbIkFMTCJdfQ==",
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Equals": [
+              {
+                "ResB": "RStatusCode"
+              },
+              "200"
+            ]
+          },
+          "AssertDescription": ""
+        },
+        {
+          "Assert": {
+            "Fn::KeyExist": [{"ResB": ""}, "ip"]
+
+          },
+          "AssertDescription": "response ip exist"
+        }
+      ]
+    },
+    {
+      "Identifier": "step-2-GET-Get_IP_Address",
+      "APIModel": "REST",
+      "Environment": "Staging",
+      "Description": "",
+      "HTTPMethod": "GET",
+      "RequestHeader": "ewogICAgICAgICAgICAiQ29udGVudC1UeXBlIjogImFwcGxpY2F0aW9uL2pzb24iLAogICAgICAgICAgICAiQ29ubmVjdGlvbiI6ICJrZWVwLWFsaXZlIgogICAgICAgIH0=",
+      "RequestBody": "",
+      "Path": "http://ip.jsontest.com/",
+      "Assertions": [
+        {
+        "Assert": {
+          "Fn::Equals": [
+            {
+              "ResB": "RStatusCode"
+            },
+            "200"
+          ]
+        }},
+        {
+          "Assert": {
+            "Fn::KeyExist": [{"ResB": ""}, "ip"]
+
+          },
+          "AssertDescription": "response ip exist"
+        }
+      ]
+    }
+  ],
+  "Report": {
+    "StorageLocation": "@JavaTFOutputPath@/test_demo1.json"
+  }
+}
