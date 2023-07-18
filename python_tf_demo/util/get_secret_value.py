@@ -20,7 +20,7 @@ def get_secret(client, secret_name):
     return secret_value
 
 input_param=sys.argv[1]
-secret_name_prefix = 'Ford/apiAuto/'
+secret_name_prefix = '<COMPANY-NAME>/<WORKSPACE-NAME>/<TEST-CASE-NAME>/'
 secret_name=secret_name_prefix+input_param
 
 # Create a session using the environment variables
