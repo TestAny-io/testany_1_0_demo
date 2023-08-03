@@ -31,7 +31,7 @@ def get_secret(client, secret_name):
     return secret_value
 
 # AWS Secrets Manager
-secret_name_prefix = '<COMPANY-NAME>/<WORKSPACE-NAME>/<TEST-CASE-NAME>/'
+secret_name_prefix = os.environ.get('CASE_SECRET_UUID') +'/'
 
 # Retrieve AWS credentials from system environment variables
 aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
